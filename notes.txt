@@ -1,0 +1,73 @@
+oru oru project ku etha code da use pannanu.
+
+npm init = one by one na pogurathuku
+npm init -y = kudutha pothu athuvey pathuku. (json file) create pannum.
+npm i express = expres nu oru package ja instal panna
+node index.js = file la runn panna.
+npm i -g nodemon = project ta live la run panna.
+
+
+const express = require('express');     downlod pannunathu file la use pannurathuku etha line in js file.
+const app = express();                  express sa oru function na call pannuro.
+const port = 3000;                      output etha port la run aganunu namatha mudiivu pannanu.namba system la same port number repect aga kudathu.
+app.listen()                            full code dayum oru port la run panna.
+
+app.listen(port,()=>{
+    console.log("Server is running...",port);
+})                                              server la run aguthanu run panna.
+
+
+
+let data =[
+    {
+        "name":"ThangaMurugan",
+        "age":22,
+        "DOB":"20-10-2001"                           value va get pannurathuku
+    }
+]
+app.use('/value',(req,res)=>{
+    res.send(data);
+})
+
+
+
+
+
+app.use(express.json());
+
+app.post('/post',(req,res)=>{
+    const {age} = req.body;
+    res.json({                                            ethu oru value va mattu get panna.
+        data:age
+    })
+})
+
+
+
+
+
+app.post('/postvalue',(req,res)=>{
+    try{
+    const {age} = req.body;
+    res.json({
+        age_is :age
+    })                                                 error handle panna etha method.
+    }
+    catch(error){
+        res.json({
+            message :`Error=${error}`
+        })
+    }
+})
+
+
+const newUserSchema = new mongoose.Schema({
+  userName: {
+    type: String,                                           ethutha fromet ta show pannu.
+  },
+});
+
+
+
+
+
